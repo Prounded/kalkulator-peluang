@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mencari Peluang</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/42dea8b921.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="teoritisContainer" style="visibility: visible;" id="teoritisContainer">
+        <div class="TitleText">Kalkulator Peluang Teoritis</div>
+        <div class="inputTeoritis">
+            <label for="totalBenda">Total Titik Sampel : </label>
+            <input type="number" name="totalBenda" id="totalBenda" max="25"><br>
+
+            <label for="banyakPengambilan">Banyak Pengambilan Sampel :</label>
+            <input type="number" name="banyakPengambilan" id="banyakPengambilan" max="5"><br>
+
+            <label for="bendaSejenis">Banyak Sampel Sejenis : </label>
+            <input type="number" name="bendaSejenis" id="bendaSejenis" max="25"><br>
+
+            <div class="checkbox-wrapper-46" id="pengembalianCheckbox">
+                <input class="inp-cbx" id="cbx-46" type="checkbox" />
+                <label class="cbx" for="cbx-46"><span>
+                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </svg></span><span>Dilakukan Pengembalian</span>
+                </label>
+            </div>
+
+            <div class="errorDisplay" id="errorDisplay"></div>
+
+            <button class="submit" onclick="findAnswer()" title="Hitung Peluang">Hitung Peluang!</button>
+        </div>
+        <i class="fa-sharp fa-regular fa-circle-question fa-3x questionSymbol" onclick="howToUse()" title="Panduan Penggunaan"></i>
+    </div>
+
+    <div class="howToUseContainer" id="howToUseContainer"  style="visibility: hidden;">
+        <div class="theManual">
+            <div class="titleUserManual">Panduan Untuk Menggunakan Kalkulator Peluang Teoritis : </div>
+            <div class="theExplanation">Kalkulator peluang ini dapat menghitung berapa besar peluang yang akan terjadi pada sampel jika terjadi pengambilan.
+                <b>Kalkulator ini hanya dapat menghitung dengan jenis yang sama. </b>Jika ingin menggunakan jenis yang berbeda dalam urutan pengambilan,
+                dapat melakukan perhitungan tambahan. Contoh kasus yang dapat dihitung adalah jika ingin mencari kemungkinan peluang diambilnya
+                dua bola hitam dalam dua pengambilan, tanpa pengembalian dan terdiri dari 2 bola putih dan 3 bola hitam. Hasilnya (3/10), 
+                sedangkan untuk mencari pola bola pertama hitam dan bola kedua putih dapat dilakukan kalkulator dengan input yang sedikit berbeda.
+                Yaitu pengambilan menjadi 1, lalu karena mengambil 2 kali, maka melakukan perhitungan 2 kali. Dengan input "Total titik sampel"
+                berkurang 1 setiap perhitungan baru dimulai. Sehingga, Input pertama akan menjadi 5 titik sampel, 1 pengambilan, dan banyak sampel
+                yang sejenis yaitu hitam (karena pada pengambilan pertama hitam ingin diambil). Lalu pada perhitungan kedua, input akan berubah 
+                yaitu 4 titik sampel, satu pengambilan, dan banyak sampel bola putih. Maka dengan kedua hasil tersebut, akan dikalikan. Dengan hasil 
+                3/10 atau setara dengan 0,3. 
+            </div>
+        </div>
+
+        <button class="understandButton" title="Hitung Peluang" onclick="howToUse()">Mengerti</button>
+    </div>
+
+    <div class="resultContainer" id="resultContainer" style="visibility: hidden;">
+        <div class="TitleText">Hasil Perhitungan</div>
+        <div class="inputUserContainer">
+            <div class="InputDisplay" id="InputFirst"></div>
+            <div class="InputDisplay" id="InputSecond"></div>
+            <div class="InputDisplay" id="InputThird"></div>
+            <div class="InputDisplay" id="InputFourth"></div>
+        </div>
+
+        <div class="displayResult">
+            <div class="theMethodContainer">
+                <div class="fractionMethod" top="-" bottom="-" id="fractionMethod" style="visibility: hidden;"></div>
+                <div class="decimalMethod methodDisplay" id="decimalMethod"           style="visibility: hidden;">0.45</div>
+                <div class="percentMethod methodDisplay" id="percentMethod"           style="visibility: hidden;">45%</div>
+            </div>
+            <div class="changeMethod" title="Ubah Bentuk Bilangan" onclick="changeMethodDisplay()" id="changeMethod">Pecahan</div>
+        </div>
+
+        <button onclick="changeUserDisplay('toCalculator')" title="Kembali ke Kalkulator" class="backToCalc">Kembali</button>
+    </div>
+
+    <div class="loadingScreenContainer" id="loadingScreenContainer" style="visibility: hidden;">
+        <div class="loader"></div>
+        <div class="loadingText"></div>
+        <div class="loaderDisplayBars" id="loaderBars"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
